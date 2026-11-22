@@ -19,7 +19,9 @@ import streamlit as st
 st.set_page_config(page_title="NutriAndes · Tablero comercial",
                    page_icon="📊", layout="wide")
 
-DATA = Path(__file__).parent / "data"
+# Busca los CSV en la carpeta data/ o, si no existe, junto a app.py
+_BASE = Path(__file__).parent
+DATA = _BASE / "data" if (_BASE / "data" / "ventas.csv").exists() else _BASE
 
 # Color fijo por canal (sigue a la entidad, no a su posición en el ranking)
 COLOR_CANAL = {
